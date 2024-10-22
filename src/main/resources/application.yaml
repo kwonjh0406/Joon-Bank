@@ -1,0 +1,10 @@
+
+spring:
+  application:
+    name: joon-bank
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/joon_bank?serverTimezone=Asia/Seoul
+    username: test
+    password: 1234
