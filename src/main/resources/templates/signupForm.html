@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joon Bank - 회원가입</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="signup-container">
+        <h1 class="signup-title">회원가입</h1>
+        <form id="signupForm" class="signup-form">
+            <div class="input-group">
+                <label for="name">실명</label>
+                <input type="text" id="name" placeholder="실명을 입력해주세요" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phoneNumber">전화번호</label>
+                <input type="text" id="phoneNumber" placeholder="전화번호를 입력해주세요" required>
+            </div>
+
+            <div class="input-group">
+                <label for="username">아이디</label>
+                <input type="text" id="username" placeholder="아이디를 입력해주세요" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" placeholder="비밀번호를 입력해주세요" required>
+            </div>
+
+<!--            <div class="input-group">-->
+<!--                <label for="password-confirm">비밀번호 확인</label>-->
+<!--                <input type="password" id="password-confirm" placeholder="비밀번호를 다시 입력해주세요" required>-->
+<!--            </div>-->
+
+            <button type="button" class="signup-button">회원가입</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/signup.js"></script>
+</body>
+</html>

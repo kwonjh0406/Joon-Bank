@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joon Bank - 로그인</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+    <div class="login-container">
+        <h1 class="login-title">로그인</h1>
+        <form action="/login" method="post" class="login-form">
+            <div class="input-group">
+                <input name="username" type="text" id="username" placeholder="아이디" required>
+            </div>
+            <div class="input-group">
+                <input name="password" type="password" id="password" placeholder="비밀번호" required>
+            </div>
+            <button type="submit" class="login-button">로그인</button>
+            <div class="links-group">
+                <a href="#" class="link-item">아이디 찾기</a>
+                <div class="divider"></div>
+                <a href="#" class="link-item">비밀번호 찾기</a>
+                <div class="divider"></div>
+                <a href="/signup" class="link-item">회원가입</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

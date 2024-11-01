@@ -1,5 +1,6 @@
-package com.kwonjh0406.joon_bank.domain.user;
+package com.kwonjh0406.joon_bank.domain.account;
 
+import com.kwonjh0406.joon_bank.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,23 +15,25 @@ import java.sql.Timestamp;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(nullable = false, unique = true)
-    private String phoneNumber;
+    private String accountName = "새 계좌";
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    private Long accountNumber;
 
-    @Column(nullable = false)
-    private String password;
+    private Long balance = 1000000L;
+
+    private Long dailyTransferLimit = 1000000L;
+
+    private AccountType accountType;
 
     @CreationTimestamp
     private Timestamp createdTime;

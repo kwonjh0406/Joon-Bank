@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 768px;
+    width: 100%;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #4B5563;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.start-button {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:hover {
+    background-color: #2563EB;
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    margin-top: 2rem;
+    color: #6B7280;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 640px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .start-button {
+        padding: 0.875rem 1.75rem;
+        font-size: 1.125rem;
+    }
+}

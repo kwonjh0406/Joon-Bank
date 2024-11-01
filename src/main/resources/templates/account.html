@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계좌 상세</title>
+    <link rel="stylesheet" href="/css/account.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<!-- 헤더 -->
+<header class="header">
+    <div class="header-content">
+        <h1 class="header-title">계좌 상세</h1>
+        <div class="header-buttons">
+            <button class="btn btn-ghost">
+                <i data-lucide="user"></i>
+                회원정보
+            </button>
+            <button class="btn btn-ghost">
+                <i data-lucide="log-out"></i>
+                로그아웃
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- 메인 콘텐츠 -->
+<main class="main-content">
+    <!-- 계좌 정보 카드 -->
+    <div class="account-card">
+        <div class="account-card-header">
+            <div class="account-info">
+                <div class="account-nickname-container">
+                    <h2>급여통장</h2>
+                    <button class="btn btn-icon">
+                        <i data-lucide="pencil"></i>
+                    </button>
+                </div>
+                <p class="account-number">123-456-789012</p>
+                <p class="account-balance">1,234,567원</p>
+            </div>
+            <button class="btn btn-icon btn-delete">
+                <i data-lucide="trash-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 거래 내역 -->
+    <section class="transactions-section">
+        <h3 class="transactions-title">거래 내역</h3>
+        <div class="transaction-list">
+            <!-- 거래 내역 항목 1 -->
+            <div class="transaction-item">
+                <div class="transaction-content">
+                    <div class="transaction-info">
+                        <p class="transaction-date">2024.10.29</p>
+                        <p class="transaction-description">스타벅스</p>
+                    </div>
+                    <div class="transaction-amount">
+                        <p class="amount withdraw">-50,000원</p>
+                        <p class="balance">1,234,567원</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 거래 내역 항목 2 -->
+            <div class="transaction-item">
+                <div class="transaction-content">
+                    <div class="transaction-info">
+                        <p class="transaction-date">2024.10.28</p>
+                        <p class="transaction-description">월급</p>
+                    </div>
+                    <div class="transaction-amount">
+                        <p class="amount deposit">+3,000,000원</p>
+                        <p class="balance">1,284,567원</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 거래 내역 항목 3 -->
+            <div class="transaction-item">
+                <div class="transaction-content">
+                    <div class="transaction-info">
+                        <p class="transaction-date">2024.10.28</p>
+                        <p class="transaction-description">식당</p>
+                    </div>
+                    <div class="transaction-amount">
+                        <p class="amount withdraw">-15,000원</p>
+                        <p class="balance">984,567원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Lucide 아이콘 초기화
+    lucide.createIcons();
+</script>
+</body>
+</html>
