@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,21 +29,13 @@
 
 <div class="container">
     <div class="account-list">
-        <div class="account-card">
-            <div class="account-nickname">급여통장</div>
-            <div class="account-number">123-456-789012</div>
-            <div class="account-balance">1,250,000원</div>
+
+        <div th:each="account : ${accounts}" class="account-card">
+            <div class="account-nickname" th:text="${account.accountName}">계좌 별칭</div>
+            <div class="account-number" th:text="${account.accountNumber}">계좌 번호</div>
+            <div class="account-balance" th:text="${account.balance}">잔액</div>
         </div>
-        <div class="account-card">
-            <div class="account-nickname">비상금</div>
-            <div class="account-number">123-456-789013</div>
-            <div class="account-balance">3,500,000원</div>
-        </div>
-        <div class="account-card">
-            <div class="account-nickname">여행자금</div>
-            <div class="account-number">123-456-789014</div>
-            <div class="account-balance">2,800,000원</div>
-        </div>
+
     </div>
     <a href="add-account">
     <button class="add-account-btn">
