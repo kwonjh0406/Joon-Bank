@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>송금 페이지</title>
+    <link rel="stylesheet" href="/css/transfer.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!-- 헤더 -->
+<header class="header">
+    <div class="header-content">
+        <button class="btn-back">
+            <i data-lucide="arrow-left"></i>
+        </button>
+        <h1 class="header-title">송금</h1>
+        <div class="header-placeholder"></div>
+    </div>
+</header>
+
+<!-- 메인 콘텐츠 -->
+<main class="transfer-container">
+    <!-- 은행 선택 -->
+    <section class="bank-select">
+        <label for="bank-dropdown" class="label">은행 선택</label>
+        <div class="dropdown-wrapper">
+            <select id="bank-dropdown" class="bank-dropdown">
+                <option value="">은행을 선택해주세요</option>
+                <option value="kb">국민은행</option>
+                <option value="shinhan">신한은행</option>
+                <option value="woori">우리은행</option>
+                <option value="hana">하나은행</option>
+                <option value="kakao">카카오뱅크</option>
+            </select>
+            <i data-lucide="chevron-down" class="dropdown-icon"></i>
+        </div>
+    </section>
+
+    <!-- 계좌 정보 -->
+    <section class="account-info">
+        <div class="account-balance">
+            <span>내 잔액</span>
+            <strong>1,234,567원</strong>
+        </div>
+    </section>
+
+    <p>현재 Limit: <span th:text="${limit}"></span></p>
+    <p>계좌 번호: <span th:text="${account.accountNumber}"></span></p>
+    <input type="hidden" id="fromAccount" th:value="${account.accountNumber}">
+
+
+    <!-- 송금 정보 입력 -->
+    <section class="transfer-input">
+        <div class="input-group">
+            <label for="account-number" class="label">받는 계좌 번호</label>
+            <input
+                    type="text"
+                    id="account-number"
+                    class="input"
+                    placeholder="- 없이 숫자만 입력"
+                    maxlength="14"
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="transfer-amount" class="label">송금 금액</label>
+            <input
+                    type="text"
+                    id="transfer-amount"
+                    class="input"
+                    placeholder="얼마를 보낼까요?"
+            >
+        </div>
+    </section>
+
+    <!-- 송금 버튼 -->
+    <button class="btn-transfer">송금하기</button>
+</main>
+
+<!-- 확인 모달 -->
+<div id="confirm-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>송금 확인</h2>
+            <button class="btn-close">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>다음 계좌로 송금하시겠습니까?</p>
+            <div class="recipient-info">
+                <p class="recipient-name">홍길동</p>
+                <p class="recipient-account">국민은행 123-45-6789</p>
+            </div>
+            <div class="transfer-summary">
+                <span>송금 금액</span>
+                <strong>50,000원</strong>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel">취소</button>
+            <button class="btn-confirm">확인</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/transfer.js"></script>
+<script>
+    // Lucide 아이콘 초기화
+    lucide.createIcons();
+
+    // 모달 관련 스크립트
+    const transferBtn = document.querySelector('.btn-transfer');
+    const modal = document.getElementById('confirm-modal');
+    const closeModalBtn = modal.querySelector('.btn-close');
+    const cancelModalBtn = modal.querySelector('.btn-cancel');
+
+    transferBtn.addEventListener('click', () => {
+        modal.classList.add('show');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+
+    cancelModalBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+</script>
+</body>
+</html>

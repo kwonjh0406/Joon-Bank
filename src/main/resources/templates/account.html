@@ -41,54 +41,33 @@
                 <p class="account-number">123-456-789012</p>
                 <p class="account-balance">1,234,567원</p>
             </div>
-            <button class="btn btn-icon btn-delete">
-                <i data-lucide="trash-2"></i>
-            </button>
+            <div class="account-actions">
+                <a th:href="@{/transfer/{accountNumber}(accountNumber=${accountNumber})}">
+                <button class="btn btn-primary">
+                    <i data-lucide="send"></i>
+                    송금하기
+                </button>
+                </a>
+                <button class="btn btn-icon btn-delete">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- 거래 내역 -->
     <section class="transactions-section">
         <h3 class="transactions-title">거래 내역</h3>
-        <div class="transaction-list">
+        <div th:each="transaction : ${transactions}" class="transaction-list">
             <!-- 거래 내역 항목 1 -->
             <div class="transaction-item">
                 <div class="transaction-content">
                     <div class="transaction-info">
-                        <p class="transaction-date">2024.10.29</p>
-                        <p class="transaction-description">스타벅스</p>
+                        <p th:text="${transaction.timestamp}" class="transaction-date">2024.10.29</p>
+                        <p th:text="${transaction.name}" class="transaction-description">스타벅스</p>
                     </div>
                     <div class="transaction-amount">
-                        <p class="amount withdraw">-50,000원</p>
-                        <p class="balance">1,234,567원</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 거래 내역 항목 2 -->
-            <div class="transaction-item">
-                <div class="transaction-content">
-                    <div class="transaction-info">
-                        <p class="transaction-date">2024.10.28</p>
-                        <p class="transaction-description">월급</p>
-                    </div>
-                    <div class="transaction-amount">
-                        <p class="amount deposit">+3,000,000원</p>
-                        <p class="balance">1,284,567원</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 거래 내역 항목 3 -->
-            <div class="transaction-item">
-                <div class="transaction-content">
-                    <div class="transaction-info">
-                        <p class="transaction-date">2024.10.28</p>
-                        <p class="transaction-description">식당</p>
-                    </div>
-                    <div class="transaction-amount">
-                        <p class="amount withdraw">-15,000원</p>
-                        <p class="balance">984,567원</p>
+                        <p th:text="${transaction.amount} + '원'" class="amount withdraw">-50,000원</p>
                     </div>
                 </div>
             </div>

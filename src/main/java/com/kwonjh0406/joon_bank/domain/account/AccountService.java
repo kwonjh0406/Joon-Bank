@@ -1,5 +1,6 @@
 package com.kwonjh0406.joon_bank.domain.account;
 
+import com.kwonjh0406.joon_bank.domain.account.accountNumber.AccountNumberingService;
 import com.kwonjh0406.joon_bank.domain.account.dto.CreateAccountParam;
 import com.kwonjh0406.joon_bank.domain.user.User;
 import com.kwonjh0406.joon_bank.domain.user.UserRepository;
@@ -18,24 +19,28 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    AccountNumberingService accountNumberingService;
+
     public ResponseEntity<String> createAccount(CreateAccountParam createAccountParam) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        Object principal = authentication.getPrincipal();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        UserDetails userDetails = (UserDetails) principal;
+        User user = userRepository.findByUsername(userDetails.getUsername());
 
-        User user = userRepository.findByUsername( userDetails.getUsername());
+        System.out.println(createAccountParam.getAccountName());
 
-        System.out.println(user.getUsername());
+        if(createAccountParam.getAccountName().isBlank()){
+            createAccountParam.defaultAccountName("새 계좌");
+        }
 
         Account account = Account.builder()
                 .accountName(createAccountParam.getAccountName())
                 .accountType(createAccountParam.getAccountType())
                 .user(user)
-                .balance(1000000L)
-                .accountNumber(100L)
+                .accountNumber(accountNumberingService.generateAccountNumber(createAccountParam.getAccountType()))
                 .build();
 
         accountRepository.save(account);

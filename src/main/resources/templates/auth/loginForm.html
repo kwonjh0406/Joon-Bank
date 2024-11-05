@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Joon Bank</title>
+    <link rel="stylesheet" href="/css/globals.css">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <div class="logo">Joon Bank</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item">서비스</a>
+            <a href="#" class="nav-item">고객센터</a>
+            <a href="#" class="nav-item">공지사항</a>
+        </div>
+    </nav>
+
+    <main class="login-container">
+        <h2 class="login-title">로그인</h2>
+        <form action="/login" method="post" class="login-form">
+            <div class="input-group">
+                <label for="username">아이디</label>
+                <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required>
+            </div>
+            <div class="input-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+            </div>
+            <div class="login-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <span>아이디 저장</span>
+                </label>
+            </div>
+            <button type="submit" class="login-button">로그인</button>
+        </form>
+        <div class="login-links">
+            <a href="#" class="find-link">아이디 찾기</a>
+            <span class="divider">|</span>
+            <a href="#" class="find-link">비밀번호 찾기</a>
+            <span class="divider">|</span>
+            <a href="/signup" class="find-link">회원가입</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

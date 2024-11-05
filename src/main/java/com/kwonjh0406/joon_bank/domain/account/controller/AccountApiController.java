@@ -1,5 +1,6 @@
-package com.kwonjh0406.joon_bank.domain.account;
+package com.kwonjh0406.joon_bank.domain.account.controller;
 
+import com.kwonjh0406.joon_bank.domain.account.AccountService;
 import com.kwonjh0406.joon_bank.domain.account.dto.CreateAccountParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계좌 상세정보 - Joon Bank</title>
+    <link rel="stylesheet" href="/css/ui-test.css">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <button class="back-button" onclick="history.back()">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <h1>계좌 상세정보</h1>
+    </header>
+
+    <div class="account-detail-card">
+        <div class="account-header">
+            <div class="account-info">
+                <h2 class="account-nickname">
+                    급여통장
+                    <button class="edit-nickname-btn">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </button>
+                </h2>
+                <p class="account-number">123-456-789012</p>
+            </div>
+            <button class="delete-account-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="account-balance">
+            <h3>계좌 잔액</h3>
+            <p class="balance-amount">1,250,000원</p>
+        </div>
+
+        <div class="account-actions">
+            <button class="transfer-button">송금하기</button>
+        </div>
+    </div>
+
+    <div class="transaction-history">
+        <h2>최근 거래내역</h2>
+        <div class="transaction-list">
+            <div class="transaction-item">
+                <div class="transaction-details">
+                    <p class="transaction-title">급여 입금</p>
+                    <p class="transaction-date">2024.02.25</p>
+                </div>
+                <p class="transaction-amount income">+1,250,000원</p>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-details">
+                    <p class="transaction-title">카페 결제</p>
+                    <p class="transaction-date">2024.02.24</p>
+                </div>
+                <p class="transaction-amount expense">-4,500원</p>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-details">
+                    <p class="transaction-title">편의점 결제</p>
+                    <p class="transaction-date">2024.02.23</p>
+                </div>
+                <p class="transaction-amount expense">-12,000원</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

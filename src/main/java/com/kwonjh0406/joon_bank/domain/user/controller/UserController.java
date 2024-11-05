@@ -1,4 +1,4 @@
-package com.kwonjh0406.joon_bank.domain.user.auth.controller;
+package com.kwonjh0406.joon_bank.domain.user.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,11 +8,12 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-        return "loginForm";
+        return "auth/loginForm";
     }
 
     @GetMapping("/signup")
     public String signup() {
-        return "signupForm";
+        return "auth/signupForm";
     }
+
 }

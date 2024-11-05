@@ -1,4 +1,4 @@
-package com.kwonjh0406.joon_bank.domain.user.auth.controller;
+package com.kwonjh0406.joon_bank.domain.user.controller;
 
 import com.kwonjh0406.joon_bank.domain.user.UserService;
 import com.kwonjh0406.joon_bank.domain.user.dto.SignUpParam;
