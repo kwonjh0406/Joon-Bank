@@ -1,6 +1,6 @@
-package com.kwonjh0406.joon_bank.domain.account;
+package com.kwonjh0406.joon_bank.domain.account.repository;
 
-import com.kwonjh0406.joon_bank.domain.user.User;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

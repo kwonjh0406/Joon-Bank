@@ -3,81 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>송금 페이지</title>
-    <link rel="stylesheet" href="/css/transfer.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>송금 - Joon Bank</title>
+    <link rel="stylesheet" href="/css/globals.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<!-- 헤더 -->
-<header class="header">
-    <div class="header-content">
-        <button class="btn-back">
-            <i data-lucide="arrow-left"></i>
-        </button>
-        <h1 class="header-title">송금</h1>
-        <div class="header-placeholder"></div>
-    </div>
-</header>
-
-<!-- 메인 콘텐츠 -->
-<main class="transfer-container">
-    <!-- 은행 선택 -->
-    <section class="bank-select">
-        <label for="bank-dropdown" class="label">은행 선택</label>
-        <div class="dropdown-wrapper">
-            <select id="bank-dropdown" class="bank-dropdown">
-                <option value="">은행을 선택해주세요</option>
-                <option value="kb">국민은행</option>
-                <option value="shinhan">신한은행</option>
-                <option value="woori">우리은행</option>
-                <option value="hana">하나은행</option>
-                <option value="kakao">카카오뱅크</option>
-            </select>
-            <i data-lucide="chevron-down" class="dropdown-icon"></i>
+<div class="container">
+    <nav class="navbar">
+        <div class="logo">Joon Bank</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item">서비스</a>
+            <a href="#" class="nav-item">고객센터</a>
+            <a href="#" class="nav-item">공지사항</a>
         </div>
-    </section>
+    </nav>
 
-    <!-- 계좌 정보 -->
-    <section class="account-info">
-        <div class="account-balance">
-            <span>내 잔액</span>
-            <strong>1,234,567원</strong>
-        </div>
-    </section>
-
-    <p>현재 Limit: <span th:text="${limit}"></span></p>
-    <p>계좌 번호: <span th:text="${account.accountNumber}"></span></p>
     <input type="hidden" id="fromAccount" th:value="${account.accountNumber}">
 
-
-    <!-- 송금 정보 입력 -->
-    <section class="transfer-input">
-        <div class="input-group">
-            <label for="account-number" class="label">받는 계좌 번호</label>
-            <input
-                    type="text"
-                    id="account-number"
-                    class="input"
-                    placeholder="- 없이 숫자만 입력"
-                    maxlength="14"
-            >
+    <main class="transfer-container">
+        <h2 class="transfer-title">송금하기</h2>
+        <div class="transfer-info">
+            <div class="account-summary">
+                <div class="account-info">
+                    <div class="nickname-container">
+                        <h2 th:text="${account.accountName}" class="account-nickname">계좌 별명</h2>
+                    </div>
+                    <p class="bank-name">준뱅크</p>
+                    <p th:text="${account.accountNumber}" class="account-number">계좌번호</p>
+                </div>
+                <div class="account-balance">
+                    <span class="balance-label">잔액</span>
+                    <span th:text="${account.balance} + '원'" class="balance-amount">잔액</span>
+                    <span th:text="'1일 잔여한도 ' + ${limit} + '원'" class="balance-label">이체한도</span>
+                </div>
+            </div>
+            <div class="transfer-form">
+                <div class="input-group">
+                    <label for="bank">은행 선택</label>
+                    <select id="bank" class="input-field">
+                        <option value="JB">준뱅크</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="account-number">상대 계좌번호</label>
+                    <input type="text" id="account-number" class="input-field" placeholder="계좌번호 입력" required>
+                </div>
+                <div class="input-group">
+                    <label for="transfer-amount">보낼 금액</label>
+                    <input type="text" id="transfer-amount" class="input-field" placeholder="보낼 금액 입력" required>
+                </div>
+                <button class="btn-transfer">송금하기</button>
+            </div>
         </div>
-
-        <div class="input-group">
-            <label for="transfer-amount" class="label">송금 금액</label>
-            <input
-                    type="text"
-                    id="transfer-amount"
-                    class="input"
-                    placeholder="얼마를 보낼까요?"
-            >
-        </div>
-    </section>
-
-    <!-- 송금 버튼 -->
-    <button class="btn-transfer">송금하기</button>
-</main>
+    </main>
+</div>
 
 <!-- 확인 모달 -->
 <div id="confirm-modal" class="modal">
@@ -107,27 +86,6 @@
 </div>
 
 <script src="/js/transfer.js"></script>
-<script>
-    // Lucide 아이콘 초기화
-    lucide.createIcons();
 
-    // 모달 관련 스크립트
-    const transferBtn = document.querySelector('.btn-transfer');
-    const modal = document.getElementById('confirm-modal');
-    const closeModalBtn = modal.querySelector('.btn-close');
-    const cancelModalBtn = modal.querySelector('.btn-cancel');
-
-    transferBtn.addEventListener('click', () => {
-        modal.classList.add('show');
-    });
-
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.remove('show');
-    });
-
-    cancelModalBtn.addEventListener('click', () => {
-        modal.classList.remove('show');
-    });
-</script>
 </body>
 </html>

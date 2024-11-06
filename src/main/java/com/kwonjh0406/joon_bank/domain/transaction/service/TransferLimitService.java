@@ -1,11 +1,13 @@
 package com.kwonjh0406.joon_bank.domain.transaction.service;
 
-import com.kwonjh0406.joon_bank.domain.account.Account;
-import com.kwonjh0406.joon_bank.domain.account.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
 import com.kwonjh0406.joon_bank.domain.transaction.entity.TransferLimit;
 import com.kwonjh0406.joon_bank.domain.transaction.repository.TransactionRepository;
 import com.kwonjh0406.joon_bank.domain.transaction.repository.TransferLimitRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,5 +44,12 @@ public class TransferLimitService {
 
         return transferLimit.getLimitAmount();
 
+    }
+
+    // 00시마다 Redis 이체 한도 데이터 초기화
+    @Transactional
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void deleteAllTransferLimits() {
+        transferLimitRepository.deleteAll();
     }
 }

@@ -1,6 +1,6 @@
-package com.kwonjh0406.joon_bank.domain.account.accountNumber;
+package com.kwonjh0406.joon_bank.domain.accountNumber;
 
-import com.kwonjh0406.joon_bank.domain.account.AccountType;
+import com.kwonjh0406.joon_bank.domain.account.entity.AccountType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

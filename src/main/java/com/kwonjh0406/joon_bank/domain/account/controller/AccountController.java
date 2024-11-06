@@ -1,6 +1,7 @@
 package com.kwonjh0406.joon_bank.domain.account.controller;
 
-import com.kwonjh0406.joon_bank.domain.account.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
 import com.kwonjh0406.joon_bank.domain.account.dto.TransactionResponse;
 import com.kwonjh0406.joon_bank.domain.transaction.entity.Transaction;
 import com.kwonjh0406.joon_bank.domain.transaction.repository.TransactionRepository;
@@ -16,31 +17,33 @@ import java.util.List;
 @Controller
 public class AccountController {
 
-    @Autowired
-    TransactionRepository transactionRepository;
+    private final TransactionRepository transactionRepository;
+    private final AccountRepository accountRepository;
 
     @Autowired
-    AccountRepository accountRepository;
+    AccountController(TransactionRepository transactionRepository, AccountRepository accountRepository) {
+        this.transactionRepository = transactionRepository;
+        this.accountRepository = accountRepository;
+    }
 
     @GetMapping("/account/create")
     public String createAccount() {
         return "createAccount";
     }
 
-    @GetMapping("/account/{id}")
-    public String account(@PathVariable("id") Long accountNumber, Model model) {
+    @GetMapping("/account/{accountNumber}")
+    public String account(@PathVariable("accountNumber") Long accountNumber, Model model) {
 
-        Long accountNum = accountRepository.findById(accountNumber).get().getAccountNumber();
+        Account account = accountRepository.findByAccountNumber(accountNumber);
 
-        List<Transaction> list =  transactionRepository.findByAccount(accountNum);
+        List<Transaction> list =  transactionRepository.findByAccount(accountNumber);
 
-
-
+        // TransactionResponse 는 거래 내역 페이지의 사용자에게 필요한 정보만 담고 있음: 상대 이름, 거래 금액, 거래 날짜
         List<TransactionResponse> transactionResponses = new ArrayList<>();
 
         for(Transaction transaction : list){
-
-            if(transaction.getFromAccount().equals(accountNum)){
+            // 내가 보낸 쪽이면 TransactionResponse(받는 쪽 이름, 거래 금액 * -1, 거래 날짜)
+            if(transaction.getFromAccount().equals(accountNumber)){
                 TransactionResponse transactionResponse = new TransactionResponse();
                 transactionResponse.setAmount(-transaction.getAmount());
                 transactionResponse.setTimestamp(transaction.getCreatedTime());
@@ -48,6 +51,7 @@ public class AccountController {
                 transactionResponse.setName(name);
                 transactionResponses.add(transactionResponse);
             }
+            // 내가 받는 쪽이면 TransactionResponse(보낸 쪽 이름, 거래 금액 * +1, 거래 날짜)
             else {
                 TransactionResponse transactionResponse = new TransactionResponse();
                 transactionResponse.setAmount(transaction.getAmount());
@@ -56,19 +60,12 @@ public class AccountController {
                 transactionResponse.setName(name);
                 transactionResponses.add(transactionResponse);
             }
-
         }
 
         model.addAttribute("transactions", transactionResponses);
+        model.addAttribute("account", account);
 
-
-
-
-
-
-        model.addAttribute("accountNumber", accountNumber);
         return "account";
-
     }
 
 }

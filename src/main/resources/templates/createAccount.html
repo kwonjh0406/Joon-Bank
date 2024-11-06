@@ -3,78 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>계좌 추가하기 - Joon Bank</title>
-    <link rel="stylesheet" href="/css/add-account.css">
+    <title>Joon Bank - 계좌 개설</title>
+    <link rel="stylesheet" href="/css/globals.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="container">
-    <header class="header">
-        <button class="back-button" onclick="history.back()">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-        </button>
-        <h1>새 계좌 추가</h1>
-    </header>
-
-    <form class="add-account-form">
-        <div class="form-group">
-            <label>은행 선택</label>
-            <div class="account-type-selection">
-                <input type="radio" name="bank" id="checking" value="CHECKING" class="bank-radio">
-                <label for="checking" class="bank-option">
-                    <div class="bank-logo kb-logo"></div>
-                    <span class="bank-name">입출금</span>
-                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                </label>
-
-                <input type="radio" name="bank" id="nh" value="nh" class="bank-radio">
-                <label for="nh" class="bank-option">
-                    <div class="bank-logo nh-logo"></div>
-                    <span class="bank-name">예금</span>
-                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                </label>
-            </div>
+    <nav class="navbar">
+        <div class="logo">Joon Bank</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item">서비스</a>
+            <a href="#" class="nav-item">고객센터</a>
+            <a href="#" class="nav-item">공지사항</a>
         </div>
+    </nav>
 
-        <div class="form-group">
-            <label for="accountNumber">계좌번호</label>
-            <input type="text" id="accountNumber" class="input-field"
-                   placeholder="숫자만 입력해주세요" required
-                   pattern="\d*">
-        </div>
-
-        <div class="form-group">
-            <label for="nickname">계좌 별명</label>
-            <input type="text" id="nickname" class="input-field"
-                   placeholder="예) 급여통장" required>
-            <p class="help-text">나중에 변경할 수 있어요</p>
-        </div>
-
-        <div class="consent-section">
-            <h2>약관 동의</h2>
-            <div class="consent-item">
-                <input type="checkbox" id="allConsent" class="checkbox">
-                <label for="allConsent">전체 동의</label>
+    <main class="accounts-container">
+        <h1 class="accounts-title">계좌 개설</h1>
+        <form class="add-account-form">
+            <div class="form-group">
+                <label>계좌 종류</label>
+                <div class="account-type-selection">
+                    <input type="radio" name="bank" id="checking" value="CHECKING" class="bank-radio">
+                    <label for="checking" class="bank-option">
+                        <div class="bank-logo kb-logo"></div>
+                        <span class="bank-name">입출금</span>
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </label>
+                </div>
             </div>
-            <div class="consent-item">
-                <input type="checkbox" id="consent1" class="checkbox">
-                <label for="consent1">계좌 조회/추가 서비스 이용약관 (필수)</label>
-            </div>
-            <div class="consent-item">
-                <input type="checkbox" id="consent2" class="checkbox">
-                <label for="consent2">금융실명법상 실명확인 동의 (필수)</label>
-            </div>
-        </div>
 
-        <button type="submit" class="create-account-button">계좌 추가하기</button>
-    </form>
+            <div class="form-group">
+                <label for="nickname">계좌 별명</label>
+                <input type="text" id="nickname" class="input-field"
+                       placeholder="예) 급여통장" required>
+                <p class="help-text">나중에 변경할 수 있어요</p>
+            </div>
+
+            <button type="button" class="create-account-button">계좌 추가하기</button>
+        </form>
+    </main>
 </div>
 <script src="/js/createAccount.js"></script>
 </body>
 </html>
+

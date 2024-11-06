@@ -1,7 +1,7 @@
-package com.kwonjh0406.joon_bank.domain.transaction;
+package com.kwonjh0406.joon_bank.domain.transaction.controller;
 
-import com.kwonjh0406.joon_bank.domain.account.Account;
-import com.kwonjh0406.joon_bank.domain.account.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
 import com.kwonjh0406.joon_bank.domain.transaction.service.TransferLimitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +18,12 @@ public class TransactionController {
     @Autowired
     AccountRepository accountRepository;
 
-    @GetMapping("/transfer/{accountNumber}")
+    @GetMapping("/account/{accountNumber}/transfer")
     public String transfer(@PathVariable("accountNumber") Long accountNumber, Model model) {
 
-        Account account =  accountRepository.findById(accountNumber).get();
+        Account account =  accountRepository.findByAccountNumber(accountNumber);
 
-        Long limit = transferLimitService.getTransferLimit(account.getAccountNumber());
+        Long limit = transferLimitService.getTransferLimit(accountNumber);
 
         model.addAttribute("limit", limit);
         model.addAttribute("account", account);

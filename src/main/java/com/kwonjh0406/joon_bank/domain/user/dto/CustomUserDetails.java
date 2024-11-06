@@ -1,6 +1,6 @@
 package com.kwonjh0406.joon_bank.domain.user.dto;
 
-import com.kwonjh0406.joon_bank.domain.user.User;
+import com.kwonjh0406.joon_bank.domain.user.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 
 import org.springframework.security.core.userdetails.UserDetails;

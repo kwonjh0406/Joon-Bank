@@ -1,6 +1,8 @@
-package com.kwonjh0406.joon_bank.domain.user;
+package com.kwonjh0406.joon_bank.domain.user.service;
 
 import com.kwonjh0406.joon_bank.domain.user.dto.SignUpParam;
+import com.kwonjh0406.joon_bank.domain.user.entity.User;
+import com.kwonjh0406.joon_bank.domain.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

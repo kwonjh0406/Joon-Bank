@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.signup-button').click(function () {
+    $('#signup-button').click(function () {
 
         const SignUpParam = {
             name: $('#name').val(),

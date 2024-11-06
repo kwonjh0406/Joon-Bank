@@ -1,6 +1,8 @@
-package com.kwonjh0406.joon_bank.domain.user;
+package com.kwonjh0406.joon_bank.domain.user.service;
 
 import com.kwonjh0406.joon_bank.domain.user.dto.CustomUserDetails;
+import com.kwonjh0406.joon_bank.domain.user.entity.User;
+import com.kwonjh0406.joon_bank.domain.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,6 +1,6 @@
 package com.kwonjh0406.joon_bank.global;
 
-import com.kwonjh0406.joon_bank.domain.account.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
 import com.kwonjh0406.joon_bank.domain.user.dto.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -36,11 +36,6 @@ public class GlobalController {
     @GetMapping("/account")
     public String account() {
         return "account";
-    }
-
-    @GetMapping("/ui-test")
-    public String uiTest() {
-        return "ui-test";
     }
 
 

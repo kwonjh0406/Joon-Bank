@@ -1,7 +1,7 @@
 package com.kwonjh0406.joon_bank.domain.account.dto;
 
 
-import com.kwonjh0406.joon_bank.domain.account.AccountType;
+import com.kwonjh0406.joon_bank.domain.account.entity.AccountType;
 import lombok.Getter;
 
 @Getter

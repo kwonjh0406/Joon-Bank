@@ -1,6 +1,5 @@
-package com.kwonjh0406.joon_bank.domain.account.accountNumber;
+package com.kwonjh0406.joon_bank.domain.accountNumber;
 
-import com.kwonjh0406.joon_bank.domain.account.AccountType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.kwonjh0406.joon_bank.domain.user;
+package com.kwonjh0406.joon_bank.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

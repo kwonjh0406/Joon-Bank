@@ -18,80 +18,42 @@
     </nav>
 
     <main class="accounts-container">
-        <h1 class="accounts-title">내 계좌 목록</h1>
+        <h1 class="accounts-title">계좌 목록</h1>
+
+        <div class="asset-summary">
+            <div class="asset-header">
+                <h1>자산 현황</h1>
+            </div>
+
+            <div class="asset-details">
+                <div class="asset-item">
+                    <span class="label">총 자산</span>
+                    <div class="amount" data-amount="8,180,000원">8,180,000원</div>
+                </div>
+                <div class="asset-item">
+                    <span class="label">총 계좌 수</span>
+                    <div th:text="${accounts.size()}" class="count">4개</div>
+                </div>
+            </div>
+        </div>
 
         <div class="accounts-list">
             <div th:each="account : ${accounts}">
-                <a th:href="@{'/account/' + ${account.id}}" class="account-item">
+                <a th:href="@{'/account/' + ${account.accountNumber}}" class="account-item">
                     <div class="account-info">
-                        <span th:text="${account.accountName}" class="account-name">계좌 별명</span>
-                        <span th:text="${account.accountNumber}" class="account-number">계좌 번호</span>
+                        <span class="account-category">입출금</span>
+                        <span th:text="${account.accountName}" class="account-name">생활비 통장</span>
+                        <span th:text="${account.accountNumber}" class="account-number">1234-5678-9012</span>
                     </div>
-                    <span th:text="${account.balance}" class="account-balance">잔액</span>
+                    <span th:text="${account.balance} + '원'" class="account-balance">₩1,200,000</span>
                 </a>
             </div>
         </div>
 
-        <a href="/account/create"><button class="open-account-button">계좌 추가하기</button></a>
+        <a href="/account/create">
+            <button class="open-account-button">계좌 추가하기</button>
+        </a>
     </main>
 </div>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Joon Bank</title>-->
-<!--    <link rel="stylesheet" href="/css/home.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<nav class="navbar">-->
-<!--    <div class="header-left">-->
-<!--        <a href="/home">-->
-<!--            <div class="header-logo">Joon Bank</div>-->
-<!--        </a>-->
-<!--    </div>-->
-<!--    <div class="header-right">-->
-<!--        <button>-->
-<!--            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-<!--                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>-->
-<!--            </svg>-->
-<!--            회원정보-->
-<!--        </button>-->
-<!--        <button>-->
-<!--            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-<!--                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>-->
-<!--            </svg>-->
-<!--            로그아웃-->
-<!--        </button>-->
-<!--    </div>-->
-<!--</nav>-->
-
-<!--<div class="container">-->
-<!--    <div class="account-list">-->
-
-<!--        <div th:each="account : ${accounts}" class="account-card">-->
-<!--            <a th:href="@{'/account/' + ${account.id}}">-->
-<!--            <div class="account-nickname" th:text="${account.accountName}">계좌 별칭</div>-->
-<!--            <div class="account-number" th:text="${account.accountNumber}">계좌 번호</div>-->
-<!--            <div class="account-balance" th:text="${account.balance} + '원'">잔액</div>-->
-<!--            </a>-->
-<!--        </div>-->
-
-
-<!--    </div>-->
-<!--    <a href="/account/create">-->
-<!--        <button class="add-account-btn">-->
-<!--            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>-->
-<!--            </svg>-->
-<!--            계좌 추가하기-->
-<!--        </button>-->
-<!--    </a>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->

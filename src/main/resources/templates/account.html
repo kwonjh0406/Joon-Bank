@@ -4,80 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>계좌 상세</title>
-    <link rel="stylesheet" href="/css/account.css">
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/css/globals.css">
 </head>
 <body>
-<!-- 헤더 -->
-<header class="header">
-    <div class="header-content">
-        <h1 class="header-title">계좌 상세</h1>
-        <div class="header-buttons">
-            <button class="btn btn-ghost">
-                <i data-lucide="user"></i>
-                회원정보
-            </button>
-            <button class="btn btn-ghost">
-                <i data-lucide="log-out"></i>
-                로그아웃
-            </button>
-        </div>
-    </div>
-</header>
+<div class="container">
 
-<!-- 메인 콘텐츠 -->
-<main class="main-content">
-    <!-- 계좌 정보 카드 -->
-    <div class="account-card">
-        <div class="account-card-header">
-            <div class="account-info">
-                <div class="account-nickname-container">
-                    <h2>급여통장</h2>
-                    <button class="btn btn-icon">
-                        <i data-lucide="pencil"></i>
-                    </button>
+    <nav class="navbar">
+        <div class="logo">Joon Bank</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item">서비스</a>
+            <a href="#" class="nav-item">고객센터</a>
+            <a href="#" class="nav-item">공지사항</a>
+        </div>
+    </nav>
+
+    <main class="account-container">
+        <header class="account-header">
+            <div class="account-summary">
+                <div class="account-info">
+                    <div class="nickname-container">
+                        <h2 th:text="${account.accountName}" class="account-nickname">생활비 계좌</h2>
+                        <button class="edit-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="bank-name">준뱅크</p>
+                    <p th:text="${account.accountNumber}" class="account-number">352-0940-9930-93</p>
                 </div>
-                <p class="account-number">123-456-789012</p>
-                <p class="account-balance">1,234,567원</p>
+                <div class="account-balance">
+                    <span class="balance-label">잔액</span>
+                    <span th:text="${account.balance} + '원'" class="balance-amount">잔액</span>
+                </div>
             </div>
-            <div class="account-actions">
-                <a th:href="@{/transfer/{accountNumber}(accountNumber=${accountNumber})}">
-                <button class="btn btn-primary">
-                    <i data-lucide="send"></i>
-                    송금하기
-                </button>
-                </a>
-                <button class="btn btn-icon btn-delete">
-                    <i data-lucide="trash-2"></i>
-                </button>
+            <div class="action-buttons">
+                <a class="btn" th:href="@{'/account/' + ${account.accountNumber} + '/transfer'}">이체</a>
+                <a class="btn" href="#">개발 중</a>
+                <a class="btn" href="#">개발 중</a>
             </div>
-        </div>
-    </div>
+        </header>
 
-    <!-- 거래 내역 -->
-    <section class="transactions-section">
-        <h3 class="transactions-title">거래 내역</h3>
-        <div th:each="transaction : ${transactions}" class="transaction-list">
-            <!-- 거래 내역 항목 1 -->
-            <div class="transaction-item">
-                <div class="transaction-content">
+        <section class="transaction-section">
+            <div class="section-header">
+                <h3 class="section-title">거래내역</h3>
+                <div class="filter-options">
+                    <select class="period-select">
+                        <option>전체</option>
+                        <option>입금</option>
+                        <option>출금</option>
+                    </select>
+                    <input type="text" placeholder="검색" class="search-input">
+                </div>
+            </div>
+
+            <!--            <div class="transaction-list">-->
+            <!--                <div class="date-group">-->
+            <!--                    <h4 class="date-header">2024년 11월 5일</h4>-->
+            <!--                    <div class="transaction-item">-->
+            <!--                        <div class="transaction-info">-->
+            <!--                            <span class="transaction-time">15:30</span>-->
+            <!--                            <span class="transaction-name">스타벅스 강남점</span>-->
+            <!--                            <span class="transaction-category">식비</span>-->
+            <!--                        </div>-->
+            <!--                        <span class="transaction-amount expense">-4,500원</span>-->
+            <!--                    </div>-->
+            <!--                    <h4 class="date-header">2024년 11월 5일</h4>-->
+            <!--                    <div class="transaction-item">-->
+            <!--                        <div class="transaction-info">-->
+            <!--                            <span class="transaction-time">15:30</span>-->
+            <!--                            <span class="transaction-name">스타벅스 강남점</span>-->
+            <!--                            <span class="transaction-category">식비</span>-->
+            <!--                        </div>-->
+            <!--                        <span class="transaction-amount expense">-4,500원</span>-->
+            <!--                    </div>-->
+
+
+            <!--                </div>-->
+            <div class="transaction-list" th:each="transaction, iterStat : ${transactions}">
+                <!-- 날짜가 변경된 경우에만 날짜 헤더를 출력 -->
+                <div th:if="${iterStat.index == 0 or #dates.format(transaction.timestamp, 'yyyy-MM-dd') != #dates.format(transactions[iterStat.index - 1].timestamp, 'yyyy-MM-dd')}"
+                     class="date-group">
+                    <h4 class="date-header" th:text="${#dates.format(transaction.timestamp, 'yyyy년 MM월 dd일')}">거래
+                        날짜</h4>
+                </div>
+
+                <!-- 거래 내역 항목 -->
+                <div class="transaction-item">
                     <div class="transaction-info">
-                        <p th:text="${transaction.timestamp}" class="transaction-date">2024.10.29</p>
-                        <p th:text="${transaction.name}" class="transaction-description">스타벅스</p>
+                        <span class="transaction-time"
+                              th:text="${#dates.format(transaction.timestamp, 'HH:mm')}">시간</span>
+                        <span class="transaction-name" th:text="${transaction.name}">사용처</span>
+                        <span class="transaction-category"
+                              th:text="${transaction.amount >= 0 ? '입금' : '출금'}">거래 종류</span>
                     </div>
-                    <div class="transaction-amount">
-                        <p th:text="${transaction.amount} + '원'" class="amount withdraw">-50,000원</p>
-                    </div>
+                    <span class="transaction-amount" th:text="${transaction.amount} + '원'">거래 금액</span>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
 
-<script>
-    // Lucide 아이콘 초기화
-    lucide.createIcons();
-</script>
+            <!--            </div>-->
+        </section>
+    </main>
+</div>
 </body>
 </html>

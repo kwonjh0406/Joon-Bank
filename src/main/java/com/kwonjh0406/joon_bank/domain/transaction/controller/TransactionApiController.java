@@ -1,14 +1,11 @@
-package com.kwonjh0406.joon_bank.domain.transaction;
+package com.kwonjh0406.joon_bank.domain.transaction.controller;
 
-import com.kwonjh0406.joon_bank.domain.account.Account;
-import com.kwonjh0406.joon_bank.domain.account.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
 import com.kwonjh0406.joon_bank.domain.transaction.dto.TransferParam;
 import com.kwonjh0406.joon_bank.domain.transaction.entity.Transaction;
-import com.kwonjh0406.joon_bank.domain.transaction.entity.TransferLimit;
 import com.kwonjh0406.joon_bank.domain.transaction.repository.TransactionRepository;
-import com.kwonjh0406.joon_bank.domain.transaction.repository.TransferLimitRepository;
-import com.kwonjh0406.joon_bank.domain.transaction.service.TransferLimitService;
-import org.apache.coyote.Response;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +22,7 @@ public class TransactionApiController {
     TransactionRepository transactionRepository;
 
     @PostMapping("/api/transfer")
-    public ResponseEntity<String> transfer(@RequestBody TransferParam transferParam) {
+    public ResponseEntity<String> transfer(@Valid @RequestBody TransferParam transferParam) {
 
 
         /**

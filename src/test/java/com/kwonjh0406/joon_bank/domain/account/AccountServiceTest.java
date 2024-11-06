@@ -1,8 +1,7 @@
 package com.kwonjh0406.joon_bank.domain.account;
 
+import com.kwonjh0406.joon_bank.domain.account.service.AccountService;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AccountServiceTest {
 

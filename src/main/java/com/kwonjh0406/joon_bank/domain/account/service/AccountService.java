@@ -1,9 +1,11 @@
-package com.kwonjh0406.joon_bank.domain.account;
+package com.kwonjh0406.joon_bank.domain.account.service;
 
-import com.kwonjh0406.joon_bank.domain.account.accountNumber.AccountNumberingService;
+import com.kwonjh0406.joon_bank.domain.account.entity.Account;
+import com.kwonjh0406.joon_bank.domain.account.repository.AccountRepository;
+import com.kwonjh0406.joon_bank.domain.accountNumber.AccountNumberingService;
 import com.kwonjh0406.joon_bank.domain.account.dto.CreateAccountParam;
-import com.kwonjh0406.joon_bank.domain.user.User;
-import com.kwonjh0406.joon_bank.domain.user.UserRepository;
+import com.kwonjh0406.joon_bank.domain.user.entity.User;
+import com.kwonjh0406.joon_bank.domain.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

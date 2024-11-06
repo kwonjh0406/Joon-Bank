@@ -6,8 +6,6 @@ $(document).ready(function () {
             accountName: $('#nickname').val(),
             accountType: $('input[name="bank"]:checked').val()
 
-
-
         };
 
         $.ajax({
@@ -16,7 +14,8 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify(CreateAccountParam),
 
-            success: function () {
+            success: function (response) {
+                console.log("서버 응답:", response);
                 alert('계좌가 개설되었습니다!');
                 location.href = '/home';
             },

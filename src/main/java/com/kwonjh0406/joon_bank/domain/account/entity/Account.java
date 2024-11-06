@@ -1,6 +1,6 @@
-package com.kwonjh0406.joon_bank.domain.account;
+package com.kwonjh0406.joon_bank.domain.account.entity;
 
-import com.kwonjh0406.joon_bank.domain.user.User;
+import com.kwonjh0406.joon_bank.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
