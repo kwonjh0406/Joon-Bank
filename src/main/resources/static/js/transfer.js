@@ -77,6 +77,8 @@ $(document).ready(function () {
             success: function () {
                 alert('송금이 완료되었습니다!');
                 modal.removeClass('show'); // 모달 닫기
+                history.back();
+                location.reload();
             },
 
             error: function (xhr) {

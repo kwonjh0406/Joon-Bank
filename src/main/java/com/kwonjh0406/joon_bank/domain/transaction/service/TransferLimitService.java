@@ -32,6 +32,10 @@ public class TransferLimitService {
             Account account = accountRepository.findByAccountNumber(accountNumber);
             Long amount = account.getDailyTransferLimit();
 
+            /*
+            당일 이체 금액 제외
+             */
+
             transferLimit = TransferLimit.builder()
                     .accountNumber(accountNumber)
                     .limitAmount(amount)
